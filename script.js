@@ -1,6 +1,9 @@
 // Listen for submit
 document.querySelector('#zipForm').addEventListener('submit', getLocationInfo);
 
+// Listen for delete
+document.querySelector('body').addEventListener('click', deleteLocation);
+
 function getLocationInfo(e) {
     // Get zip value from input
     const zip = document.querySelector('.zip').value;
@@ -45,5 +48,11 @@ function getLocationInfo(e) {
         })
         .catch(err => console.log(err))
     e.preventDefault();
+};
 
+function deleteLocation(e) {
+    if (e.target.className == 'delete') {
+        document.querySelector('.message').remove();
+        document.querySelector('.zip').value = '';
+    }
 }
